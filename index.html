@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <span id="hrs"></span>:<span id="mins"></span>:<span id="secs"></span>
+
+    <input id="hr" placeholder="hr" type="number" />
+    <input id="min" placeholder="hr" type="number" />
+    <input id="sec" placeholder="hr" type="number" />
+    <select id="time">
+      <option value="am">AM</option>
+      <option value="am">PM</option>
+    </select>
+    <button onclick="setAlarm()">set alarm</button>
+    <button onclick="stopAlarm()">set alarm</button>
+
+    <script type="text/javascript">
+      var myHr, myMin, mySec, myTime;
+      var aud = new Audio("victory.mp3");
+      //this set the current time and displays it on the screen
+      function myFunc() {
+        var date = new Date();
+        hrs.innerText = date.getHours();
+        mins.innerText = date.getMinutes();
+        secs.innerText = date.getSeconds();
+        checkTime();
+      }
+
+      //this picks users inputs
+      function setAlarm() {
+        myHr = hr.value;
+        myMin = min.value;
+        mySec = sec.value;
+        myTime = time.value;
+      }
+      //this checks if the current time is the same as the set time
+      function checkTime() {
+        var newHr;
+        var date = new Date();
+        if (myTime == "pm") {
+          newHour = Number(myHr) + 12;
+        }
+        if (
+          date.getHours() == newHour &&
+          date.get.getMinutes() == myMin &&
+          date.getSeconds() == mySec
+        ) {
+          aud.play();
+        }
+      }
+      //this stops the alarm
+      function stopAlarm() {
+        aud.pause();
+      }
+      setInterval(myFunc, 1000);
+      //setInterval(checkTime,1000);
+    </script>
+  </body>
+</html>
